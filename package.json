@@ -1,5 +1,5 @@
 {
-  "name": "Assist-Me-with-Node",
+  "name": "assist-me-with-node",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,10 +11,16 @@
     "url": "git+https://github.com/DavidWeid/Assist-Me-with-Node.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "David Weid",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DavidWeid/Assist-Me-with-Node/issues"
   },
-  "homepage": "https://github.com/DavidWeid/Assist-Me-with-Node#readme"
+  "homepage": "https://github.com/DavidWeid/Assist-Me-with-Node#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^6.2.0",
+    "moment": "^2.24.0",
+    "node-spotify-api": "^1.0.7"
+  }
 }
