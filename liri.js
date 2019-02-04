@@ -22,17 +22,20 @@
 
     // For functions //
 
-    // for searchMovie
-    var movieTitle = "Big Hero 6";
-    // for searchMusic
-    var songTitle = "for him.";
-    // musicType can be "artist" OR "album" OR "track"
-    var musicType = "track";
-    // for searchConcert
-    var artist = "Troye Sivan";
+    // Default variables (user doesn't add a query)
+        // for searchMovie
+        var movieTitle = "Big Hero 6";
+        // for searchMusic
+        var songTitle = "i'm so tired...";
+        // musicType can be "artist" OR "album" OR "track"
+        var musicType = "track";
+        // for searchConcert
+        var artist = "Troye Sivan";
+    //
 
+    // User's command
     var command = process.argv[2];
-
+    // User's query
     var searchQuery = process.argv.slice(3).join(" ");
 
 ///// VARIABLES end /////
@@ -48,22 +51,41 @@
         switch (command) {
 
             case "concert-this":
-                artist = searchQuery;
+
+                if (searchQuery === "") {
+                    artist = artist;
+                } else {
+                    artist = searchQuery;
+                };
+
                 searchConcert();
                 break;
 
             case "spotify-this-song":
-                songTitle = searchQuery;
+
+                if (searchQuery === "") {
+                    songTitle = songTitle;
+                } else {
+                    songTitle = searchQuery;
+                };
+
                 searchMusic();
                 break;
 
             case "movie-this":
-                movieTitle = searchQuery;
+
+                if (searchQuery === "") {
+                    movieTitle = movieTitle;
+                } else {
+                    movieTitle = searchQuery;
+                };
+
                 searchMovie();
                 break;
 
             case "do-what-it-says":
-                console.log("Do it.");
+                // something = somethingElse //
+                readItAndDoIt();
                 break;
 
             default:
@@ -146,9 +168,13 @@
 
     };
 
+    // Command "do-what-it-says"
+    function readItAndDoIt() {
+
+        console.log("Online");
+
+    }
+
 ///// FUNCTIONS end /////
 
-// searchMovie();
-// searchMusic();
-// searchConcert();
 liriCommand();
