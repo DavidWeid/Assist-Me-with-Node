@@ -1,49 +1,96 @@
-require("dotenv").config();
+///// VARIABLES /////
 
-var keys = require("./keys.js");
+    // Bring in stuff //
+    require("dotenv").config();
 
-var Spotify = require("node-spotify-api");
+    var keys = require("./keys.js");
 
-var spotify = new Spotify(keys.spotify);
+    var Spotify = require("node-spotify-api");
 
-var moment = require("moment");
-moment().format();
+    var spotify = new Spotify(keys.spotify);
 
-require("dotenv").config();
+    var moment = require("moment");
+    moment().format();
 
-var axios = require("axios");
+    require("dotenv").config();
 
-var chalk = require("chalk");
+    var axios = require("axios");
 
-var fs = require("fs");
+    var chalk = require("chalk");
 
-//Commands: 'concert-this', 'spotify-this-song', 'movie-this', 'do-what-it-says'
+    var fs = require("fs");
 
-var movieTitle = "Big Hero 6";
-var songTitle = "for him.";
-// musicType can be "artist" OR "album" OR "track"
-var musicType = "track";
+    // For functions //
 
-axios.get("http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy").then(function(response) {
-    var movieInfo = response.data;
-    console.log(movieInfo.Title);
-    console.log(movieInfo.Year);
-    console.log(movieInfo.Ratings[2].Value);
-    console.log(movieInfo.imdbRating);
-    console.log(movieInfo.Country);
-    console.log(movieInfo.Language);
-    console.log(movieInfo.Plot);
-    console.log(movieInfo.Actors);
-    console.log("- - - - - - - - - - - -- - - - - - - - - - - -- - - - - - - - - - - -- - - - - - - - - - - -- - - - - - - - - - - -");
-});
+    // for searchMovie
+    var movieTitle = "Big Hero 6";
+    // for searchMusic
+    var songTitle = "for him.";
+    // musicType can be "artist" OR "album" OR "track"
+    var musicType = "track";
 
-spotify.search({type: musicType, query: songTitle, limit: 1}).then(function(response) {
+///// VARIABLES end /////
 
-    if (error) return error;
 
-    var trackInfo = response.tracks.items[0];
-    console.log(JSON.stringify(trackInfo.artists[0].name));
-    console.log(JSON.stringify(trackInfo.name));
-    console.log(JSON.stringify(trackInfo.external_urls.spotify));
-    console.log(JSON.stringify(trackInfo.album.name));
-})
+
+
+///// FUNCTIONS /////
+
+    // Command "movie-this"
+    function searchMovie() {
+
+        axios.get("http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy").then(function(response) {
+
+            var movieInfo = response.data;
+
+            console.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+            console.log(" ");
+            console.log(movieInfo.Title);
+            console.log(movieInfo.Year);
+            console.log(movieInfo.Ratings[1].Value + " on Rotten Tomatoes");
+            console.log(movieInfo.imdbRating + " on IMDb");
+            console.log("Origin: " + movieInfo.Country);
+            console.log("In " + movieInfo.Language);
+            console.log(movieInfo.Plot);
+            console.log("Featuring stars " + movieInfo.Actors);
+            console.log(" ");
+            console.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+        });
+
+    };
+
+    // Command "spotify-this-song"
+    function searchMusic() {
+
+        spotify.search({type: musicType, query: songTitle, limit: 1}).then(function(response) {
+
+            var trackInfo = response.tracks.items[0];
+
+            console.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+            console.log(" ");
+            console.log("Artist: " + JSON.stringify(trackInfo.artists[0].name));
+            console.log("Track: " + JSON.stringify(trackInfo.name));
+            console.log("Listen: " + JSON.stringify(trackInfo.external_urls.spotify));
+            console.log("Album: " + JSON.stringify(trackInfo.album.name));
+            console.log(" ");
+            console.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+        }).catch(function(err) {
+
+            console.log("Error: " + err);
+
+        });
+
+    };
+
+    // Command "concert-this"
+    function searchConcert() {
+
+
+
+    };
+
+///// FUNCTIONS end /////
+
+searchConcert();
