@@ -118,6 +118,10 @@
             console.log(" ");
             console.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
+        }).catch(function(err) {
+
+            console.log("Error: " + err);
+
         });
 
     };
@@ -149,8 +153,11 @@
     // Command "concert-this"
     function searchConcert() {
 
+        // console.log(artist);
+
         axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(function(response) {
 
+            // console.log(response);
             console.log("Next three shows for " + chalk.bold.blue(response.data[0].lineup[0]));
             console.log(" ");
             console.log("- - - - - - - - - - - - - - -");
@@ -164,6 +171,10 @@
 
             };
     
+        }).catch(function(err) {
+
+            console.log("Error: " + err);
+
         });
 
     };
@@ -171,10 +182,42 @@
     // Command "do-what-it-says"
     function readItAndDoIt() {
 
-        console.log("Online");
+        fs.readFile("random.txt", "utf8", function(error, data) {
 
-    }
+            if (error) return error;
+
+            // console.log(data);
+
+            var dataArr = data.split(", ");
+
+            // console.log(dataArr);
+
+            command = dataArr[0];
+            searchQuery = dataArr[1];
+
+            console.log("I will " + command + " for " + searchQuery);
+
+            liriCommand();
+
+        });
+
+    };
+
+    // append to log.txt
+    function logData() {
+
+        fs.appendFile("log.txt", ", " + command + ", " + "'" + searchQuery + "'", function(err) {
+
+            if (err) return err;
+
+            console.log("Activity logged!");
+            console.log(" ");
+
+        })
+
+    };
 
 ///// FUNCTIONS end /////
 
 liriCommand();
+logData();
