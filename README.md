@@ -52,3 +52,20 @@ The following information is provided
   - Used to store configuration data for the Spotify API
 - chalk
   - Used in improve visual feedback through terminal styling
+  
+#### The Last Command
+The fourth command option available to the User is "do-what-it-says", which includes no query parameter. When the user uses this command, AMN will run using the "spotify-this-song" command and the "I want it that way" query. This is just a default command that the User can do to easily get back a demo'd output.
+
+## Flexibility
+
+#### Goals
+The goal with AMN, in terms of usability, is that the User always gets back some output. If the User enters only `node liri.js` or `node liri.js <falseCommand>`, where <falseCommand> is not a listed command, then they get back "Sorry, I don't know how to answer that right now."
+
+If the User enters `node liri.js <command>`, where <command> is any of the listed commands, then they get back a pre-selected result (since no query was entered by the User). The pre-selected results use "Troye Sivan" for a concert search, "i'm so tired..." for a song search, and "Big Hero 6" for a movie search.
+
+Lastly, the User can enter `node liri.js <command> <query>`, where query is relevent to the command. For both the spotify-this-song and movie-this commands, the query can be in three formats (capitalization is not important):
+- Bring me the Horizon
+- "Bring Me the Horizon"
+- Bring-Me-the-Horizon
+
+However, the concert-this command does not work with the last format listed. In either case, if the search can't be completed, an error will be loggged to the terminal.
