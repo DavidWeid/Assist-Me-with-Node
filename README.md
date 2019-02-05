@@ -56,6 +56,9 @@ The following information is provided
 #### The Last Command
 The fourth command option available to the User is "do-what-it-says", which includes no query parameter. When the user uses this command, AMN will run using the "spotify-this-song" command and the "I want it that way" query. This is just a default command that the User can do to easily get back a demo'd output.
 
+#### Data Logged
+Every time the User runs `node liri.js`, process.argv[i] is logged, where i > 1. 
+
 ## Flexibility
 
 #### Goals
