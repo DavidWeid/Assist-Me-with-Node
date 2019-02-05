@@ -12,6 +12,8 @@ The command in this example is "spotify-this-song" and the search query is "...B
 
 AMN displays data from three different sources, including the the Bandsintown API, the Spotify API, and the OMDb API.
 
+![Example of AMN](Assist-Me-with-Node/images/oneGif.gif)
+
 #### Useful
 
 Assist Me with Node (AMN) allows the User to look up information on their favorite artists/bands next concerts, their favorite artists/bands songs, and their favorite movies.
