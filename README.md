@@ -72,3 +72,7 @@ Lastly, the User can enter `node liri.js <command> <query>`, where query is rele
 - Bring-Me-the-Horizon
 
 However, the concert-this command does not work with the last format listed. In either case, if the search can't be completed, an error will be loggged to the terminal.
+
+## Example Video
+
+[Test Run](https://drive.google.com/file/d/1VGKbhgTSrJ28NApq0AYeN44g0QdD8dD8/view)
