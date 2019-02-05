@@ -206,14 +206,18 @@
     // append to log.txt
     function logData() {
 
-        fs.appendFile("log.txt", ", " + command + ", " + "'" + searchQuery + "'", function(err) {
+        if (process.argv.length > 2) {
+            
+            fs.appendFile("log.txt", ", " + command + ", " + "'" + searchQuery + "'", function(err) {
 
-            if (err) return err;
+                if (err) return err;
 
-            console.log("Activity logged!");
-            console.log(" ");
+                console.log("Activity logged!");
+                console.log(" ");
 
-        })
+            })
+
+        };
 
     };
 
