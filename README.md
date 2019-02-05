@@ -12,7 +12,7 @@ The command in this example is "spotify-this-song" and the search query is "...B
 
 AMN displays data from three different sources, including the the Bandsintown API, the Spotify API, and the OMDb API.
 
-![Example of AMN](Assist-Me-with-Node/images/oneGif.gif)
+![Example of AMN](/images/oneGif.gif)
 
 #### Useful
 
