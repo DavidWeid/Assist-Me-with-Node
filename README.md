@@ -1,6 +1,6 @@
 # Assist Me with Node
 
-### Overview
+## Overview
 
 Assist Me with Node (AMN) is a Language Interpretation and Recognition Interface (LIRI) that works as a command line node application.
 
@@ -35,3 +35,20 @@ The following information is provided
   - A short plot
   - Actors
 
+## How it Works
+
+#### Assist Me with Node (AMN) uses a handful of resources/npm packages.
+- axios
+  - Uses the `.get()` method
+  - Used to access the OMDb API
+  - Used to access the Bandsintown API
+- node-spotify-api
+  - Uses the `.search()` method
+  - Used to access the Spotify API
+- moment
+  - Uses `moment().format()` to convert timeData into an easier to read format
+  - Used with the Bandsintown API and the axios call
+- dotenv
+  - Used to store configuration data for the Spotify API
+- chalk
+  - Used in improve visual feedback through terminal styling
